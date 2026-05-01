@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>skruraaaa@dev:~$</title><link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet"><style>
+:root {
+  --cursor-visibility: visible;
+}
+
+body {
+  margin: 0;
+  background: #0b0b0c;
+  color: #657B83;
+  font-family: "Inconsolata", monospace;
+  font-size: 2.5vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#Content {
+  min-width: 60vmin;
+}
+
+#user { color: #C3E88D; }
+#dir { color: #80CBC3; }
+#terminal { color: #657B83; }
+
+a {
+  color: #ff4da6;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+a:hover {
+  color: #ff85c1;
+  text-shadow: 0 0 5px #ff4da6;
+}
+
+.cursor::after {
+  content: "▌";
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+</style></head><body><div id="content">
+  <span id="ps1_01"></span>
+  <span id="cd"></span><br><span id="ps1_02"></span> <span id="cat"></span><br>
+
+<span id="std_out_01"></span><br>
+
+<span id="ps1_03"></span> <span id="tree"></span><br>
+
+<span id="std_out_02"></span><br>
+
+<span id="ps1_04"></span>
+
+</div><script>
+async function typewriter(text, elementId, delay) {
+  let i = 0;
+  const el = document.getElementById(elementId);
+
+  while (i < text.length) {
+    el.innerHTML = text.substring(0, i + 1);
+    await new Promise(r => setTimeout(r, delay));
+    i++;
+  }
+}
+
+async function runTerminal() {
+  await typewriter("<span id='user'>sakura@dev</span>:<span id='dir'>~/</span>$", "ps1_01", 15);
+
+  await typewriter(" cd hack", "cd", 15);
+
+  await typewriter("<span id='user'>sakura@dev</span>:<span id='dir'>~/hack</span>$", "ps1_02", 15);
+
+  await typewriter(" cat about.txt", "cat", 15);
+
+  await typewriter("<br>hi, i'm sakura<br><br>i build tools for the internet<br>developer • creator • learner<br>", "std_out_01", 15);
+
+  await typewriter("<span id='user'>skruraaaa</span>:<span id='dir'>~/hack</span>$", "ps1_03", 15);
+
+  await typewriter(" tree ./hack/", "tree", 15);
+
+  await typewriter(
+    "<br><span id='dir'>./hack/</span><br>" +
+    "├── <a href='https://www.instagram.com/skruraaaa' target='_blank'>Instagram</a><br>" +
+    "├── <a href='https://discord.gg/PBG5j96yrf' target='_blank'>Discord</a><br>" +
+    "└── <a href='mailto:skruraaaa@gmail.com'>Email</a>",
+    "std_out_02",
+    15
+  );
+
+  await typewriter(
+    "<br><span style='color:#d1d5db'>bye see u soon</span><br>hahahahahaha",
+    "ps1_04",
+    15
+  );
+}
+
+runTerminal();
+</script></body>
+</html>
