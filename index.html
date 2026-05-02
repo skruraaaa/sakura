@@ -8,10 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --cursor-visibility: visible;
-}
-
 body {
   margin: 0;
   background: #0b0b0c;
@@ -30,7 +26,6 @@ body {
 
 #user { color: #C3E88D; }
 #dir { color: #80CBC3; }
-#terminal { color: #657B83; }
 
 a {
   color: #ff4da6;
@@ -43,11 +38,6 @@ a:hover {
   text-shadow: 0 0 5px #ff4da6;
 }
 
-.cursor::after {
-  content: "▌";
-  animation: blink 0.7s infinite;
-}
-
 @keyframes blink {
   50% { opacity: 0; }
 }
@@ -57,74 +47,58 @@ a:hover {
 <body>
 
 <div id="content">
-  <span id="ps1_01"></span>
-  <span id="cd"></span><br>
-
-  <span id="ps1_02"></span>
-  <span id="cat"></span><br>
-
-  <span id="std_out_01"></span><br>
-
-  <span id="ps1_03"></span>
-  <span id="tree"></span><br>
-
-  <span id="std_out_02"></span><br>
-
-  <span id="ps1_04"></span>
+  <span id="main"></span>
 </div>
 
 <script>
-async function typewriter(text, elementId, delay) {
-  let i = 0;
-  const el = document.getElementById(elementId);
-
-  while (i < text.length) {
-    el.innerHTML = text.substring(0, i + 1);
+async function type(text, delay = 15) {
+  const el = document.getElementById("main");
+  for (let i = 0; i < text.length; i++) {
+    el.innerHTML += text[i];
     await new Promise(r => setTimeout(r, delay));
-    i++;
   }
 }
 
-async function runTerminal() {
+async function runMain() {
 
-  await typewriter("<span id='user'>sakura@dev</span>:<span id='dir'>~/</span>$", "ps1_01", 15);
+  await type("<span id='user'>sakura@dev</span>:<span id='dir'>~/</span>$ cd hack<br>");
+  await type("<span id='user'>sakura@dev</span>:<span id='dir'>~/hack</span>$ cat about.txt<br><br>");
 
-  await typewriter(" cd hack", "cd", 15);
+  await type("hi, i'm sakura<br><br>");
+  await type("i build tools for the <del>internet</del><br>");
+  await type("developer • creator • learner<br><br>");
 
-  await typewriter("<span id='user'>sakura@dev</span>:<span id='dir'>~/hack</span>$", "ps1_02", 15);
+  await type("<span id='user'>skruraaaa</span>:<span id='dir'>~/hack</span>$ tree ./hack/<br>");
+  await type("./hack/<br>");
 
-  await typewriter(" cat about.txt", "cat", 15);
+  await type("├── <a href='#' onclick='showBeemo()'>Beemo</a><br>");
+  await type("├── <a href='https://www.instagram.com/skruraaaa' target='_blank'>Instagram</a><br>");
+  await type("├── <a href='https://discord.gg/PBG5j96yrf' target='_blank'>Discord</a><br>");
+  await type("└── <a href='mailto:skruraaaa@gmail.com'>Email</a><br><br>");
 
-  await typewriter(
-    "<br>hi, i'm sakura<br><br>" +
-    "i build tools for the <del>internet</del> internet<br>" +
-    "developer • creator • learner<br>",
-    "std_out_01",
-    15
-  );
-
-  await typewriter("<span id='user'>skruraaaa</span>:<span id='dir'>~/hack</span>$", "ps1_03", 15);
-
-  await typewriter(" tree ./hack/", "tree", 15);
-
-  await typewriter(
-    "<br><span id='dir'>./hack/</span><br>" +
-    "├── <a href='https://www.instagram.com/skruraaaa' target='_blank'>Instagram</a><br>" +
-    "├── <a href='https://discord.gg/PBG5j96yrf' target='_blank'>Discord</a><br>" +
-    "├── <a href='mailto:skruraaaa@gmail.com'>Email</a><br>" +
-    "└── <a href='https://beemo.gg/' target='_blank'>Beemo</a>",
-    "std_out_02",
-    15
-  );
-
-  await typewriter(
-    "<br><span style='color:#d1d5db'>bye see u soon</span><br>hahahahahaha",
-    "ps1_04",
-    15
-  );
+  await type("<span style='color:#d1d5db'>bye see u soon</span><br>");
+  await type("hahahahahaha");
 }
 
-runTerminal();
+function showBeemo() {
+  document.getElementById("content").innerHTML = 
+    <div>
+      <h2>Beemo</h2>
+      <p>
+      Beemo is a verified Discord bot project that I have been working on since 2018.
+      The purpose of Beemo is to stop spam across the platform to make the lives of
+      server owners and moderators easier. Beemo has successfully detected and banned
+      over 25,000,000 spam accounts and continues to detect more 24/7.
+      </p>
+      <br>
+      <a href="https://beemo.gg/" target="_blank">https://beemo.gg/</a>
+      <br><br>
+      <a href="#" onclick="location.reload()">← Back</a>
+    </div>
+  ;
+}
+
+runMain();
 </script>
 
 </body>
