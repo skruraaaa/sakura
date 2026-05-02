@@ -37,10 +37,6 @@ a:hover {
   color: #ff85c1;
   text-shadow: 0 0 5px #ff4da6;
 }
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
 </style>
 </head>
 
@@ -71,10 +67,10 @@ async function runMain() {
   await type("<span id='user'>skruraaaa</span>:<span id='dir'>~/hack</span>$ tree ./hack/<br>");
   await type("./hack/<br>");
 
-  await type("├── <a href='#' onclick='showBeemo()'>Beemo</a><br>");
   await type("├── <a href='https://www.instagram.com/skruraaaa' target='_blank'>Instagram</a><br>");
   await type("├── <a href='https://discord.gg/PBG5j96yrf' target='_blank'>Discord</a><br>");
-  await type("└── <a href='mailto:skruraaaa@gmail.com'>Email</a><br><br>");
+  await type("├── <a href='mailto:skruraaaa@gmail.com'>Email</a><br>");
+  await type("└── <a href='#' onclick='showBeemo()'>Beemo</a><br><br>");
 
   await type("<span style='color:#d1d5db'>bye see u soon</span><br>");
   await type("hahahahahaha");
@@ -82,8 +78,8 @@ async function runMain() {
 
 function showBeemo() {
   document.getElementById("content").innerHTML = 
-    <div>
-      <h2>Beemo</h2>
+    <div style="max-width:600px;">
+      <h2 style="color:#80CBC3;">Beemo</h2>
       <p>
       Beemo is a verified Discord bot project that I have been working on since 2018.
       The purpose of Beemo is to stop spam across the platform to make the lives of
