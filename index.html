@@ -3,25 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>skruraaaa@dev:~$</title>
+<title>sakura@dev:~$</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
+  padding: 20px;
   background: #0b0b0c;
   color: #657B83;
   font-family: "Inconsolata", monospace;
-  font-size: 2.5vmin;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-#Content {
-  min-width: 60vmin;
+  font-size: 16px;
 }
 
 #user { color: #C3E88D; }
@@ -43,7 +36,8 @@ a:hover {
 <div id="content"></div>
 
 <script>
-function renderMain() {
+// MAIN PAGE
+function showMain() {
   document.getElementById("content").innerHTML = 
 <span id='user'>sakura@dev</span>:<span id='dir'>~/</span>$ cd hack<br>
 <span id='user'>sakura@dev</span>:<span id='dir'>~/hack</span>$ cat about.txt<br><br>
@@ -66,20 +60,18 @@ hahahahahaha
 ;
 }
 
+// BEEMO PAGE
 function showBeemo() {
   document.getElementById("content").innerHTML = 
-<div style="max-width:600px;">
 <h2 style="color:#80CBC3;">Beemo</h2>
 
 <p>
 Beemo is a verified Discord bot project that I have been working on since 2018.
-The purpose of Beemo is to stop spam across the platform to make the lives of
-server owners and moderators easier.
+The purpose of Beemo is to stop spam across the platform to make moderation easier.
 </p>
 
 <p>
-Beemo has successfully detected and banned over 25,000,000 spam accounts
-and continues to detect more 24/7.
+Beemo has detected and banned millions of spam accounts and continues 24/7.
 </p>
 
 <br>
@@ -88,13 +80,12 @@ and continues to detect more 24/7.
 
 <br><br>
 
-<a href="#" onclick="renderMain()">← Back</a>
-</div>
+<a href="#" onclick="showMain()">← Back</a>
 ;
 }
 
-// load page
-renderMain();
+// LOAD PAGE
+showMain();
 </script>
 
 </body>
