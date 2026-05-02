@@ -30,71 +30,71 @@ body {
 a {
   color: #ff4da6;
   text-decoration: none;
-  transition: 0.3s ease;
 }
 
 a:hover {
   color: #ff85c1;
-  text-shadow: 0 0 5px #ff4da6;
 }
 </style>
 </head>
 
 <body>
 
-<div id="content">
-  <span id="main"></span>
-</div>
+<div id="content"></div>
 
 <script>
-async function type(text, delay = 15) {
-  const el = document.getElementById("main");
-  for (let i = 0; i < text.length; i++) {
-    el.innerHTML += text[i];
-    await new Promise(r => setTimeout(r, delay));
-  }
-}
+function renderMain() {
+  document.getElementById("content").innerHTML = 
+<span id='user'>sakura@dev</span>:<span id='dir'>~/</span>$ cd hack<br>
+<span id='user'>sakura@dev</span>:<span id='dir'>~/hack</span>$ cat about.txt<br><br>
 
-async function runMain() {
+hi, i'm sakura<br><br>
 
-  await type("<span id='user'>sakura@dev</span>:<span id='dir'>~/</span>$ cd hack<br>");
-  await type("<span id='user'>sakura@dev</span>:<span id='dir'>~/hack</span>$ cat about.txt<br><br>");
+i build tools for the <del>internet</del><br>
+developer • creator • learner<br><br>
 
-  await type("hi, i'm sakura<br><br>");
-  await type("i build tools for the <del>internet</del><br>");
-  await type("developer • creator • learner<br><br>");
+<span id='user'>skruraaaa</span>:<span id='dir'>~/hack</span>$ tree ./hack/<br>
 
-  await type("<span id='user'>skruraaaa</span>:<span id='dir'>~/hack</span>$ tree ./hack/<br>");
-  await type("./hack/<br>");
+./hack/<br>
+├── <a href="https://www.instagram.com/skruraaaa" target="_blank">Instagram</a><br>
+├── <a href="https://discord.gg/PBG5j96yrf" target="_blank">Discord</a><br>
+├── <a href="mailto:skruraaaa@gmail.com">Email</a><br>
+└── <a href="#" onclick="showBeemo()">Beemo</a><br><br>
 
-  await type("├── <a href='https://www.instagram.com/skruraaaa' target='_blank'>Instagram</a><br>");
-  await type("├── <a href='https://discord.gg/PBG5j96yrf' target='_blank'>Discord</a><br>");
-  await type("├── <a href='mailto:skruraaaa@gmail.com'>Email</a><br>");
-  await type("└── <a href='#' onclick='showBeemo()'>Beemo</a><br><br>");
-
-  await type("<span style='color:#d1d5db'>bye see u soon</span><br>");
-  await type("hahahahahaha");
+<span style="color:#d1d5db">bye see u soon</span><br>
+hahahahahaha
+;
 }
 
 function showBeemo() {
   document.getElementById("content").innerHTML = 
-    <div style="max-width:600px;">
-      <h2 style="color:#80CBC3;">Beemo</h2>
-      <p>
-      Beemo is a verified Discord bot project that I have been working on since 2018.
-      The purpose of Beemo is to stop spam across the platform to make the lives of
-      server owners and moderators easier. Beemo has successfully detected and banned
-      over 25,000,000 spam accounts and continues to detect more 24/7.
-      </p>
-      <br>
-      <a href="https://beemo.gg/" target="_blank">https://beemo.gg/</a>
-      <br><br>
-      <a href="#" onclick="location.reload()">← Back</a>
-    </div>
-  ;
+<div style="max-width:600px;">
+<h2 style="color:#80CBC3;">Beemo</h2>
+
+<p>
+Beemo is a verified Discord bot project that I have been working on since 2018.
+The purpose of Beemo is to stop spam across the platform to make the lives of
+server owners and moderators easier.
+</p>
+
+<p>
+Beemo has successfully detected and banned over 25,000,000 spam accounts
+and continues to detect more 24/7.
+</p>
+
+<br>
+
+<a href="https://beemo.gg/" target="_blank">https://beemo.gg/</a>
+
+<br><br>
+
+<a href="#" onclick="renderMain()">← Back</a>
+</div>
+;
 }
 
-runMain();
+// load page
+renderMain();
 </script>
 
 </body>
