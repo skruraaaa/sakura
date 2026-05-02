@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beemo</title>
+<title>beemo@dev:~$</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 
@@ -11,7 +11,7 @@
 body {
   margin: 0;
   background: #0b0b0c;
-  color: #9ca3af;
+  color: #657B83;
   font-family: "Inconsolata", monospace;
   font-size: 2.5vmin;
   display: flex;
@@ -24,13 +24,26 @@ body {
   min-width: 60vmin;
 }
 
+#user { color: #C3E88D; }
+#dir { color: #80CBC3; }
+
 a {
-  color: #9ca3af;
+  color: #ff4da6;
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #ff85c1;
+  text-shadow: 0 0 5px #ff4da6;
+}
+
+.cursor::after {
+  content: "▌";
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 </style>
 </head>
@@ -38,11 +51,15 @@ a:hover {
 <body>
 
 <div id="content">
-<span id="line1"></span><br><br>
-<span id="line2"></span><br><br>
-<span id="line3"></span><br><br>
-<span id="line4"></span><br><br>
-<span id="back"></span>
+  <span id="ps1_01"></span>
+  <span id="cd"></span><br>
+
+  <span id="ps1_02"></span>
+  <span id="cat"></span><br>
+
+  <span id="output"></span><br>
+
+  <span id="ps1_03"></span>
 </div>
 
 <script>
@@ -59,29 +76,29 @@ async function typewriter(text, elementId, delay) {
 
 async function runBeemo() {
 
-  await typewriter("<b>Beemo</b>", "line1", 20);
+  // cd beemo
+  await typewriter("<span id='user'>sakura@dev</span>:<span id='dir'>~/</span>$", "ps1_01", 15);
+  await typewriter(" cd beemo", "cd", 15);
 
+  // cat about.txt
+  await typewriter("<span id='user'>sakura@dev</span>:<span id='dir'>~/beemo</span>$", "ps1_02", 15);
+  await typewriter(" cat about.txt", "cat", 15);
+
+  // output (professional intro)
   await typewriter(
-    "Beemo is a verified Discord bot designed to combat spam and enhance server moderation.",
-    "line2",
+    "<br><b>Beemo</b><br><br>" +
+    "Beemo is a verified Discord bot built to combat spam and improve server moderation.<br><br>" +
+    "Since 2018, it has successfully detected and removed millions of spam accounts,<br>" +
+    "helping communities stay safe and organized.<br><br>" +
+    "learn more: <a href='https://beemo.gg/' target='_blank'>https://beemo.gg/</a><br>",
+    "output",
     15
   );
 
+  // back
   await typewriter(
-    "Since its launch in 2018, Beemo has successfully detected and removed millions of spam accounts, providing a safer and more efficient experience for communities.",
-    "line3",
-    15
-  );
-
-  await typewriter(
-    "Learn more: <a href='https://beemo.gg/' target='_blank'>https://beemo.gg/</a>",
-    "line4",
-    15
-  );
-
-  await typewriter(
-    "<a href='index.html'>← Back</a>",
-    "back",
+    "<br><span style='color:#9ca3af'><a href='index.html'>← back</a></span>",
+    "ps1_03",
     15
   );
 }
