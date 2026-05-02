@@ -1,33 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beemo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+
 <style>
 body {
+  margin: 0;
   background: #0b0b0c;
   color: #9ca3af;
-  font-family: monospace;
-  padding: 20px;
+  font-family: "Inconsolata", monospace;
+  font-size: 2.5vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-a { color: #9ca3af; }
+
+#Content {
+  min-width: 60vmin;
+}
+
+a {
+  color: #9ca3af;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 
 <body>
 
-<h2>Beemo</h2>
+<div id="content">
+<span id="line1"></span><br><br>
+<span id="line2"></span><br><br>
+<span id="line3"></span><br><br>
+<span id="line4"></span><br><br>
+<span id="back"></span>
+</div>
 
-<p>
-Beemo is a verified Discord bot project that I have been working on since 2018.
-The purpose of Beemo is to stop spam across the platform.
-</p>
+<script>
+async function typewriter(text, elementId, delay) {
+  let i = 0;
+  const el = document.getElementById(elementId);
 
-<p>
-To learn more visit:
-<a href="https://beemo.gg/" target="_blank">https://beemo.gg/</a>
-</p>
+  while (i < text.length) {
+    el.innerHTML = text.substring(0, i + 1);
+    await new Promise(r => setTimeout(r, delay));
+    i++;
+  }
+}
 
-<a href="index.html">← Back</a>
+async function runBeemo() {
+
+  await typewriter("<b>Beemo</b>", "line1", 20);
+
+  await typewriter(
+    "Beemo is a verified Discord bot designed to combat spam and enhance server moderation.",
+    "line2",
+    15
+  );
+
+  await typewriter(
+    "Since its launch in 2018, Beemo has successfully detected and removed millions of spam accounts, providing a safer and more efficient experience for communities.",
+    "line3",
+    15
+  );
+
+  await typewriter(
+    "Learn more: <a href='https://beemo.gg/' target='_blank'>https://beemo.gg/</a>",
+    "line4",
+    15
+  );
+
+  await typewriter(
+    "<a href='index.html'>← Back</a>",
+    "back",
+    15
+  );
+}
+
+runBeemo();
+</script>
 
 </body>
 </html>
