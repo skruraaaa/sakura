@@ -1,8 +1,13 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>skruraaaa@dev:~$</title><link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet"><style>
+<title>skruraaaa@dev:~$</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+
+<style>
 :root {
   --cursor-visibility: visible;
 }
@@ -46,19 +51,29 @@ a:hover {
 @keyframes blink {
   50% { opacity: 0; }
 }
-</style></head><body><div id="content">
+</style>
+</head>
+
+<body>
+
+<div id="content">
   <span id="ps1_01"></span>
-  <span id="cd"></span><br><span id="ps1_02"></span> <span id="cat"></span><br>
+  <span id="cd"></span><br>
 
-<span id="std_out_01"></span><br>
+  <span id="ps1_02"></span>
+  <span id="cat"></span><br>
 
-<span id="ps1_03"></span> <span id="tree"></span><br>
+  <span id="std_out_01"></span><br>
 
-<span id="std_out_02"></span><br>
+  <span id="ps1_03"></span>
+  <span id="tree"></span><br>
 
-<span id="ps1_04"></span>
+  <span id="std_out_02"></span><br>
 
-</div><script>
+  <span id="ps1_04"></span>
+</div>
+
+<script>
 async function typewriter(text, elementId, delay) {
   let i = 0;
   const el = document.getElementById(elementId);
@@ -71,6 +86,7 @@ async function typewriter(text, elementId, delay) {
 }
 
 async function runTerminal() {
+
   await typewriter("<span id='user'>sakura@dev</span>:<span id='dir'>~/</span>$", "ps1_01", 15);
 
   await typewriter(" cd hack", "cd", 15);
@@ -79,7 +95,13 @@ async function runTerminal() {
 
   await typewriter(" cat about.txt", "cat", 15);
 
-  await typewriter("<br>hi, i'm sakura<br><br>i build tools for the internet<br>developer • creator • learner<br>", "std_out_01", 15);
+  await typewriter(
+    "<br>hi, i'm sakura<br><br>" +
+    "i build tools for the <del>internet</del> internet<br>" +
+    "developer • creator • learner<br>",
+    "std_out_01",
+    15
+  );
 
   await typewriter("<span id='user'>skruraaaa</span>:<span id='dir'>~/hack</span>$", "ps1_03", 15);
 
@@ -89,7 +111,8 @@ async function runTerminal() {
     "<br><span id='dir'>./hack/</span><br>" +
     "├── <a href='https://www.instagram.com/skruraaaa' target='_blank'>Instagram</a><br>" +
     "├── <a href='https://discord.gg/PBG5j96yrf' target='_blank'>Discord</a><br>" +
-    "└── <a href='mailto:skruraaaa@gmail.com'>Email</a>",
+    "├── <a href='mailto:skruraaaa@gmail.com'>Email</a><br>" +
+    "└── <a href='https://beemo.gg/' target='_blank'>Beemo</a>",
     "std_out_02",
     15
   );
@@ -102,5 +125,7 @@ async function runTerminal() {
 }
 
 runTerminal();
-</script></body>
+</script>
+
+</body>
 </html>
